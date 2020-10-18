@@ -1,27 +1,34 @@
-# Shared Virtual Private Cloud Networking in Google Cloud
+# coalfire
+Interview GCP Test Case
+# Coalfire Interview GCP Test Case
 
-This is a template showcasing the shared VPC feature in Google Cloud.  It features
-four projects:
-- A host project, which owns a VPC
-- Two service projects, each of which owns a VM connected to the VPC
-- A fourth project, which owns a VM not connected to the VPC.
+## Irving Starks
+### ncsu.ee2000@gmail.com
+@@ -124,7 +123,7 @@ https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
+    link/ether 42:01:0a:00:02:06 brd ff:ff:ff:ff:ff:ff
+ #   inet 10.0.2.6/32 scope global dynamic noprefixroute eth0
+  **  inet 10.0.2.6/32 scope global dynamic noprefixroute eth0 **
+       valid_lft 3414sec preferred_lft 3414sec
+    inet6 fe80::da4c:58ee:efe9:beb/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+@@ -153,12 +152,12 @@ Server built:   Dec  2 2019 14:15:24
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
+    link/ether 42:01:0a:00:00:05 brd ff:ff:ff:ff:ff:ff
+#     inet 10.0.0.5/32 scope global dynamic noprefixroute eth0
+**    inet 10.0.0.5/32 scope global dynamic noprefixroute eth0. **
+       valid_lft 2510sec preferred_lft 2510sec
+    inet6 fe80::3f3b:65ab:59ee:2a14/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
 
-It is based on the diagram in the overview at [https://cloud.google.com/vpc/docs/shared-vpc](https://cloud.google.com/vpc/docs/shared-vpc).
+### Apache installed
+# Apache installed
 
-Begin by [downloading your credentials from Google Cloud Console](https://www.terraform.io/docs/providers/google/#credentials); the default path for the downloaded file is `~/.gcloud/Terraform.json`.  If you use another path, update the `credentials_file_path` variable.  Ensure that these credentials have Organization-level permissions - this example will create and administer projects.
+[triple@compute-rhel-internet ~]$ sudo service httpd start
+Redirecting to /bin/systemctl start httpd.service
 
-This example creates projects within an organization - to run it, you will need to have an Organization ID.  To get started using Organizations, read the quickstart [here](https://cloud.google.com/resource-manager/docs/quickstart-organizations).  Since it uses organizations, project-specific credentials won't work, and consequently this example is configured to use [application default credentials](https://developers.google.com/identity/protocols/application-default-credentials).  Ensure that the application default credentials have permission to create and manage projects and Shared VPCs (sometimes called 'XPN').  The example also requires you to specify a billing account, since it does start up a few VMs.
-
-After you run `terraform apply` on this configuration, it will output the IP address of the second service project's VM, which (after it's done starting up) displays a page checking network connectivity to the other two VMs.
-
-Run with a command like:
-```
-terraform apply \
-        -var="region=us-central1" \
-        -var="region_zone=us-central1-f" \
-        -var="org_id=1234567" \
-        -var="billing_account_id=XXXXXXXXXXXX"
-```
 * [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
 * [GCP Host Project Service Account View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_11.png)
 * [GCP Organization Folder View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_12.png)
