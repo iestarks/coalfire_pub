@@ -147,4 +147,5 @@ irvs@Irvs-MacBook-Pro coalfire_vpc % terraform state list
 
  * Test Instance connectivity with no EXT IP to internet with only private IP, within A different REGION
  * Improve code to reference more modules during Infra build to reduce main code length.
+ * Add Instance Template and Instance Group modules to compute layer for HA 
  
