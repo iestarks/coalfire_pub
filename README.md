@@ -57,7 +57,7 @@ The structure and formatting of the documentation is up to you.
 
 ##################################################################################################################################
 
-# Some areas where I performed some research into developing the Terraform IAC for this project
+**Some areas where I performed some research into developing the Terraform IAC for this project
 
 google_compute_global_forwarding_rule
 
