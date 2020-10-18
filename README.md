@@ -1,8 +1,8 @@
 ## Coalfire Interview GCP Test Case
 
- Irving Starks
- ncsu.ee2000@gmail.com
-Scenario A 
+# Irving Starks - ncsu.ee2000@gmail.com
+
+# Scenario A 
 
 Coalfire is looking to create a proof of concept environment in GCP. 
 
