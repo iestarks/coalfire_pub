@@ -1,4 +1,4 @@
-## Coalfire Interview GCP Test Case
+## Coalfire Interview 
 
 # Irving Starks - ncsu.ee2000@gmail.com
 
