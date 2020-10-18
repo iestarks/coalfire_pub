@@ -127,3 +127,16 @@ irvs@Irvs-MacBook-Pro coalfire_vpc % terraform state list
 * module.cloud-nat.google_compute_router_nat.main
 * module.cloud-nat.random_string.name_suffix
 * module.cloud_router.google_compute_router.router
+
+###Extra work performed
+* Terraform coded the Project and Host folder creation during Project build stage, as it was probably intended to be done manually or Out of State.
+* Separated Instances in separate zones for HA
+
+### Issues encountered
+* Impersonating SA during project and folder creation, at ORG level. -- Resolve, discovered missing roles and ie ResourceManager.project.create and billing Admin.
+
+### Improvement Areas
+
+ * Test Instance connectivity with no EXT IP to internet with only private IP, within A different REGION
+ * Improve code to reference more modules during Infra build to reduce main code length.
+ 
