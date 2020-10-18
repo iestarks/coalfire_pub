@@ -115,3 +115,34 @@ Server built:   Dec  2 2019 14:15:24
 * [GCP NAT View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_6.png)
 * [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
 * [GCP External IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_9.png)
+
+
+## Terraform State list
+
+irvs@Irvs-MacBook-Pro coalfire_vpc % terraform state list
+google_compute_backend_service.default
+google_compute_firewall.firewall-nointernet
+google_compute_firewall.internet_firewall
+google_compute_firewall.shared_network-fw
+google_compute_global_forwarding_rule.default
+google_compute_http_health_check.default
+google_compute_instance.apache-vm
+google_compute_instance.compute-rhel-internet
+google_compute_network.shared_network
+google_compute_shared_vpc_host_project.host_project
+google_compute_shared_vpc_service_project.service_project_1
+google_compute_subnetwork.coalfire_shared_network_sub1
+google_compute_subnetwork.coalfire_shared_network_sub3
+google_compute_target_http_proxy.default
+google_compute_url_map.default
+google_folder.Application-Coalfire
+google_folder.Management-Coalfire
+google_project.host_project
+google_project.service_project_1
+google_project_service.host_project
+google_project_service.service_project_1
+random_id.host_project
+random_id.service_project_1
+module.cloud-nat.google_compute_router_nat.main
+module.cloud-nat.random_string.name_suffix
+module.cloud_router.google_compute_router.router
