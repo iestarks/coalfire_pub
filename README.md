@@ -75,80 +75,12 @@ The structure and formatting of the documentation is up to you.
 
 * https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
 
-
-
-
-[triple@apache-vm ~]$ /sbin/ip address
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:02:06 brd ff:ff:ff:ff:ff:ff
- #   inet 10.0.2.6/32 scope global dynamic noprefixroute eth0
-       valid_lft 3414sec preferred_lft 3414sec
-    inet6 fe80::da4c:58ee:efe9:beb/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-
-### Apache installed
-
-[triple@apache-vm ~]$ sudo service httpd start
-Redirecting to /bin/systemctl start httpd.service
-[triple@apache-vm ~]$ sudo chkconfig httpd on
-@@ -118,3 +141,31 @@ Server built:   Dec  2 2019 14:15:24
-[triple@apache-vm ~]$ 
-
+#### Apache Terminal RHEL
+![Apache Terminal](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_22.png)
 
 
 #### Internet Facing RHEL
-
-[triple@compute-rhel-internet ~]$ /sbin/ip address
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:00:05 brd ff:ff:ff:ff:ff:ff
-#     inet 10.0.0.5/32 scope global dynamic noprefixroute eth0
-       valid_lft 2510sec preferred_lft 2510sec
-    inet6 fe80::3f3b:65ab:59ee:2a14/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-
-### Apache installed
-
-[triple@compute-rhel-internet ~]$ sudo service httpd start
-Redirecting to /bin/systemctl start httpd.service
-
-[triple@compute-rhel-internet ~]$ sudo chkconfig httpd on
-Note: Forwarding request to 'systemctl enable httpd.service'.
-
-[triple@compute-rhel-internet ~]$ httpd -v
-Server version: Apache/2.4.37 (Red Hat Enterprise Linux)
-Server built:   Dec  2 2019 14:15:24
-
-@@ -124,7 +123,7 @@ https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:02:06 brd ff:ff:ff:ff:ff:ff
- #   inet 10.0.2.6/32 scope global dynamic noprefixroute eth0
-  **  inet 10.0.2.6/32 scope global dynamic noprefixroute eth0 **
-       valid_lft 3414sec preferred_lft 3414sec
-    inet6 fe80::da4c:58ee:efe9:beb/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-@@ -153,12 +152,12 @@ Server built:   Dec  2 2019 14:15:24
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:00:05 brd ff:ff:ff:ff:ff:ff
-#     inet 10.0.0.5/32 scope global dynamic noprefixroute eth0
-**    inet 10.0.0.5/32 scope global dynamic noprefixroute eth0. **
-       valid_lft 2510sec preferred_lft 2510sec
-    inet6 fe80::3f3b:65ab:59ee:2a14/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-
+![Apache Terminal](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_23.png)
 
 
 ##### Screenshots
