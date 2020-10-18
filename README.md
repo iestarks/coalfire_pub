@@ -61,7 +61,7 @@ The structure and formatting of the documentation is up to you.
 
 * google_compute_global_forwarding_rule
 
-https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
+  https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
 
 * Building internet connectivity for private VMs
 
