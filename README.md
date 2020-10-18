@@ -57,24 +57,23 @@ The structure and formatting of the documentation is up to you.
 
 ##################################################################################################################################
 
-**Some areas where I performed some research into developing the Terraform IAC for this project
+# Some areas where I performed some research into developing the Terraform IAC for this project
 
-google_compute_global_forwarding_rule
+* google_compute_global_forwarding_rule
 
 https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
 
-Building internet connectivity for private VMs
+* Building internet connectivity for private VMs
 
-https://cloud.google.com/solutions/building-internet-connectivity-for-private-vms
+* https://cloud.google.com/solutions/building-internet-connectivity-for-private-vms
 
-NAT
+* NAT
 
-https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
+* https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
 
+* Shared VPC Host Project
 
-Shared VPC Host Project
-
-https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
+* https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
 
 
 
