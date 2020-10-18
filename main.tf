@@ -238,9 +238,6 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub3" {
      subnetwork_project = google_compute_network.shared_network.project
      subnetwork = google_compute_subnetwork.coalfire_shared_network_sub3.self_link
 
-   #access_config {
-      
-   #}
   }
 
   service_account {
