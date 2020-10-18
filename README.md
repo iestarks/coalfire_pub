@@ -22,4 +22,4 @@ terraform apply \
         -var="org_id=1234567" \
         -var="billing_account_id=XXXXXXXXXXXX"
 ```
-[Implementation Results Screenshots](coalfire/screenshots/)
+[Implementation Results Screenshots](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
