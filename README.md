@@ -82,3 +82,36 @@ Your final deliverables will include the URL for your GitHub repository and your
 Upon completing the challenge, please email your documentation and the link to your public GitHub
 repository to
 # campbell.ware@coalfire.com for review. If you have further clarification questions, or issues, please notify us immediately.
+
+Some areas where I performed some research into developing the Terraform IAC for this project
+
+# google_compute_global_forwarding_rule
+
+https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
+
+# Building internet connectivity for private VMs
+
+https://cloud.google.com/solutions/building-internet-connectivity-for-private-vms
+
+# NAT
+
+https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
+
+
+# Shared VPC Host Project
+
+https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
+
+
+# Apache install on NAT GW RHEL host
+
+[triple@apache-vm ~]$ sudo service httpd start
+Redirecting to /bin/systemctl start httpd.service
+[triple@apache-vm ~]$ sudo chkconfig httpd on
+Note: Forwarding request to 'systemctl enable httpd.service'.
+[triple@apache-vm ~]$ httpd -v
+Server version: Apache/2.4.37 (Red Hat Enterprise Linux)
+Server built:   Dec  2 2019 14:15:24
+[triple@apache-vm ~]$ 
+
+
