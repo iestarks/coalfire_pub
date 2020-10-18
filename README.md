@@ -128,12 +128,14 @@ irvs@Irvs-MacBook-Pro coalfire_vpc % terraform state list
 * module.cloud-nat.random_string.name_suffix
 * module.cloud_router.google_compute_router.router
 
-###Extra work performed
+### Extra work performed
 * Terraform coded the Project and Host folder creation during Project build stage, as it was probably intended to be done manually or Out of State.
 * Separated Instances in separate zones for HA
 
 ### Issues encountered
 * Impersonating SA during project and folder creation, at ORG level. -- Resolve, discovered missing roles and ie ResourceManager.project.create and billing Admin.
+
+* During inital stage, New Orgs only allow 12 project folder creation,where you have to fill out a form to request additional Quotas. Problem there is Google has a horrible support model for these types of request, where online form does supply a ticket number after the quota request. Then you have to call and provide information, only to be told that there is no case referencing the form. You have to get the rep to create one but he or she will not assign or contact the team about the case. You basically have to wait until they get to it,which was stated to be 2 days or more. Therefore, if you are in an urgent or time sensitive deployement which requires the quotas of any magnitude, you are basically out of luck unless you recreate a new ORG, which is what I did to continue.
 
 ### Improvement Areas
 
