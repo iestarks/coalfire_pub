@@ -24,10 +24,11 @@ terraform apply \
 ```
 * [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
 * [GCP Host Project Service Account View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_11.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
-* [GCP IAM Member View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_10.png)
+* [GCP Organization Folder View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_12.png)
+* [Apache Shell RHEL View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_14.png)
+* [GCP Apache VM Instance Details View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_18.png)
+* [GCP Compute RHEL Instance View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_17.png)
+* [GCP VM Instances IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_19.png)
+* [GCP NAT View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_6.png)
+* [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
+
