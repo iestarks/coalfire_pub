@@ -1,173 +1,24 @@
-# Coalfire Interview GCP Test Case
+# Shared Virtual Private Cloud Networking in Google Cloud
 
-## Irving Starks
-### ncsu.ee2000@gmail.com
+This is a template showcasing the shared VPC feature in Google Cloud.  It features
+four projects:
+- A host project, which owns a VPC
+- Two service projects, each of which owns a VM connected to the VPC
+- A fourth project, which owns a VM not connected to the VPC.
 
+It is based on the diagram in the overview at [https://cloud.google.com/vpc/docs/shared-vpc](https://cloud.google.com/vpc/docs/shared-vpc).
 
-## Coalfire Technical Challenge
+Begin by [downloading your credentials from Google Cloud Console](https://www.terraform.io/docs/providers/google/#credentials); the default path for the downloaded file is `~/.gcloud/Terraform.json`.  If you use another path, update the `credentials_file_path` variable.  Ensure that these credentials have Organization-level permissions - this example will create and administer projects.
 
-## Due: Sunday, 10/18/20 @ 5:00 PM EDT
+This example creates projects within an organization - to run it, you will need to have an Organization ID.  To get started using Organizations, read the quickstart [here](https://cloud.google.com/resource-manager/docs/quickstart-organizations).  Since it uses organizations, project-specific credentials won't work, and consequently this example is configured to use [application default credentials](https://developers.google.com/identity/protocols/application-default-credentials).  Ensure that the application default credentials have permission to create and manage projects and Shared VPCs (sometimes called 'XPN').  The example also requires you to specify a billing account, since it does start up a few VMs.
 
-Before you begin, please note:
+After you run `terraform apply` on this configuration, it will output the IP address of the second service project's VM, which (after it's done starting up) displays a page checking network connectivity to the other two VMs.
 
-1. You must perform this challenge by yourself, no other persons may assist you.
-
-2. Try to accomplish as many tasks as you can within the time-period allotted. Quality of the
-implementation is an important factor.
-
-3. You are strongly encouraged to search the web and use resources like Stack Overflow and
-GitHub. 
-
-Please note in the write-up the URLs/sources you used for the final deliverable. The
-amount of resources you use does not count negatively; we are interested in both the end result
-and the process you used to get there.
-
-4. If you are unsure on how to complete a task, or your implementation is not working,
-documenting the process you went through and what issues your ran into is also strongly
-encouraged as it highlights your thought process when posed with a challenge.
-
-5. Do not post or share this Technical Challenge or information about it to the Internet. Each
-technical challenge has distinct differences and can be tied back to the individual who received
-it.
-
-Scenario
-A company is looking to create a proof of concept environment in GCP. 
-
-They want a VPC as outlined below. 
-
-The company will have a management folder and host project that will contain the VPC and
-subnets and an application folder and service project that will deploy resources into the shared subnets.
-
-Subnets should be deployed with future high availability in mind.
-
-
- The company would also like to use
-
-Terraform to manage their infrastructure via code.
-
-• 1 VPC
-• 4 subnets
-
-o Sub1 – 10.0.0.0/24 (should be accessible from internet)
-o Sub2 – 10.0.1.0/24 (should be accessible from internet)
-o Sub3 – 10.0.2.0/24 (should NOT be accessible from internet)
-o Sub4 – 10.0.3.0/24 (should NOT be accessible from internet)
-
-• 1 compute instance running RedHat in subnet sub1
-o 20 GB storage
-o Choose the best instance type for the job and explain reasoning
-
-• 1 compute instance running RedHat in subnet sub3
-o 20 GB storage
-o Choose the best instance type for the job and explain reasoning
-
-o Script the installation of apache on this instance
-• 1 Layer 7 Load Balancer that listens on port 80 and forwards traffic to the instance in Sub3
-
-Instructions
-
-1. Create Terraform code that creates these networking and compute constructs and push the code
-to a public GitHub repository. 
-
-Any detail that is not provided in the scenario is up to your
-discretion.
- Use of Terraform modules is encouraged.
-
-2. Login to the instance in sub1 and take a screenshot of the terminal logged in. Include this
-screenshot in your documentation.
-
-
-3. Document how you implemented the technical challenge, including any sources you used. You
-may be asked to walkthrough your solution as if presenting to a client. 
-
-Your final deliverables will include the URL for your GitHub repository and your documentation. 
-
-The structure and formatting of the documentation is up to you.
-
-Upon completing the challenge, please email your documentation and the link to your public GitHub
-repository to
-
-# campbell.ware@coalfire.com for review. If you have further clarification questions, or issues, please notify us immediately.
-##################################################################################################################################
-
-
-# Some areas where I performed some research into developing the Terraform IAC for this project
-
-# google_compute_global_forwarding_rule
-
-https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
-
-# Building internet connectivity for private VMs
-
-https://cloud.google.com/solutions/building-internet-connectivity-for-private-vms
-
-# NAT
-
-https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
-
-
-# Shared VPC Host Project
-
-https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
-
-
-# Apache install on NAT GW RHEL host
-
-
-[triple@apache-vm ~]$ /sbin/ip address
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:02:06 brd ff:ff:ff:ff:ff:ff
-  **  inet 10.0.2.6/32 scope global dynamic noprefixroute eth0 **
-       valid_lft 3414sec preferred_lft 3414sec
-    inet6 fe80::da4c:58ee:efe9:beb/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-       
-### Apache installed
-
-[triple@apache-vm ~]$ sudo service httpd start
-Redirecting to /bin/systemctl start httpd.service
-[triple@apache-vm ~]$ sudo chkconfig httpd on
-Note: Forwarding request to 'systemctl enable httpd.service'.
-[triple@apache-vm ~]$ httpd -v
-Server version: Apache/2.4.37 (Red Hat Enterprise Linux)
-Server built:   Dec  2 2019 14:15:24
-[triple@apache-vm ~]$ 
-
-
-
-#### Internet Facing RHEL
-
-[triple@compute-rhel-internet ~]$ /sbin/ip address
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1460 qdisc fq_codel state UP group default qlen 1000
-    link/ether 42:01:0a:00:00:05 brd ff:ff:ff:ff:ff:ff
-**    inet 10.0.0.5/32 scope global dynamic noprefixroute eth0. **
-       valid_lft 2510sec preferred_lft 2510sec
-    inet6 fe80::3f3b:65ab:59ee:2a14/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-
-# Apache installed
-
-[triple@compute-rhel-internet ~]$ sudo service httpd start
-Redirecting to /bin/systemctl start httpd.service
-
-[triple@compute-rhel-internet ~]$ sudo chkconfig httpd on
-Note: Forwarding request to 'systemctl enable httpd.service'.
-
-[triple@compute-rhel-internet ~]$ httpd -v
-Server version: Apache/2.4.37 (Red Hat Enterprise Linux)
-Server built:   Dec  2 2019 14:15:24
-
-
-![GitHub Logo](/images/logo.png)
+Run with a command like:
+```
+terraform apply \
+        -var="region=us-central1" \
+        -var="region_zone=us-central1-f" \
+        -var="org_id=1234567" \
+        -var="billing_account_id=XXXXXXXXXXXX"
+```
