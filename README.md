@@ -76,7 +76,7 @@ The structure and formatting of the documentation is up to you.
 * https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
 
 
-![Apache Terminal](/coalfire/screenshots/Snip20201018_22.png)
+![Apache Terminal](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_22.png)
 
 
 
