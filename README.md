@@ -76,6 +76,7 @@ The structure and formatting of the documentation is up to you.
 * https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html
 
 
+### Org Folder and Project View
 
 ![Org Folder and Project View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_25.png)
 
