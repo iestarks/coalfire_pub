@@ -168,3 +168,6 @@ Note: Forwarding request to 'systemctl enable httpd.service'.
 [triple@compute-rhel-internet ~]$ httpd -v
 Server version: Apache/2.4.37 (Red Hat Enterprise Linux)
 Server built:   Dec  2 2019 14:15:24
+
+
+![GitHub Logo](/images/logo.png)
