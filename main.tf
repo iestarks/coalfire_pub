@@ -21,7 +21,7 @@ resource "google_project" "host_project" {
 }
 
 resource "google_folder" "Management-Coalfire" {
-  display_name = "Management-Coalfire"
+  display_name = "Management-Coalfire-Project"
   parent       = "organizations/227459452227"
 }
 
@@ -37,7 +37,7 @@ resource "google_project" "service_project_1" {
 #####  Create Application Folder in Org
 
 resource "google_folder" "Application-Coalfire" {
-  display_name = "Application-Coalfire"
+  display_name = "Application-Coalfire-Project"
   parent       = "organizations/227459452227"
 
 }
@@ -96,8 +96,6 @@ resource "google_compute_network" "shared_network" {
 resource "google_compute_firewall" "shared_network-fw" {
   name    = "allow-ssh-icmp-from-iap-shared"
   network = google_compute_network.shared_network.self_link
-  #project = google_project.service_project_1.project_id
-  #project = google_compute_network.shared_network.project
     project = google_compute_shared_vpc_host_project.host_project.project
 
   allow {
@@ -115,7 +113,6 @@ resource "google_compute_firewall" "shared_network-fw" {
 
 resource "google_compute_firewall" "internet_firewall" {
   name    = "allow-ssh-80-from-iap"
-  #network       = google_compute_network.custom_coalfire_network.self_link
    network = google_compute_network.shared_network.self_link
     project = google_compute_shared_vpc_host_project.host_project.project
    
@@ -132,13 +129,11 @@ resource "google_compute_firewall" "internet_firewall" {
 }
 
 
-####Create Firewall record for the custom subnet for no EGRESS
+####Create Firewall record for the custom subnet for no Internet
 
 resource "google_compute_firewall" "firewall-nointernet" {
     name          = "vpc-${var.network}-firewall-${var.rule-name}"
-  #network       = google_compute_network.custom_coalfire_network.self_link
     network = google_compute_network.shared_network.self_link
-    #project = google_project.service_project_1.project_id
      project = google_compute_shared_vpc_host_project.host_project.project
 
   allow {
@@ -151,18 +146,44 @@ resource "google_compute_firewall" "firewall-nointernet" {
 
 }
 
-
+#####Subnet Builds
 
 
 resource "google_compute_subnetwork" "coalfire_shared_network_sub1" {
   name          = "coalfire-custom-network-sub1"
   ip_cidr_range = "10.0.0.0/24"
-  #network       = google_compute_network.custom_coalfire_network.self_link
   network      = google_compute_network.shared_network.self_link
-  #project       = google_project.service_project_1.project_id
    project = google_compute_network.shared_network.project
   region        = var.region
 }
+
+resource "google_compute_subnetwork" "coalfire_shared_network_sub2" {
+  name          = "coalfire-custom-network-sub2"
+  ip_cidr_range = "10.0.1.0/24"
+     network = google_compute_network.shared_network.self_link
+     project = google_compute_network.shared_network.project
+  region        = var.region
+}
+
+
+
+resource "google_compute_subnetwork" "coalfire_shared_network_sub3" {
+  name          = "coalfire-custom-network-sub3"
+  ip_cidr_range = "10.0.2.0/24"
+     network = google_compute_network.shared_network.self_link
+     project = google_compute_network.shared_network.project
+  region        = var.region
+}
+
+
+resource "google_compute_subnetwork" "coalfire_shared_network_sub4" {
+  name          = "coalfire-custom-network-sub3"
+  ip_cidr_range = "10.0.3.0/24"
+     network = google_compute_network.shared_network.self_link
+     project = google_compute_network.shared_network.project
+  region        = var.region
+}
+
 
 ##############################################################################
 #############################################################################
@@ -204,22 +225,13 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub1" {
 
 
 
-resource "google_compute_subnetwork" "coalfire_shared_network_sub3" {
-  name          = "coalfire-custom-network-sub3"
-  ip_cidr_range = "10.0.2.0/24"
-   #  network       = google_compute_network.custom_coalfire_network.self_link
-     network = google_compute_network.shared_network.self_link
-     #project       = google_project.service_project_1.project_id
-     project = google_compute_network.shared_network.project
-  region        = var.region
-}
+
 
 
 #############################################################################
 # # Create a VM which hosts a web page stating its identity ("VM1")
  resource "google_compute_instance" "apache-vm" {
    name         = "apache-vm"
-   #project      = google_project.service_project_1.project_id
     project = google_compute_network.shared_network.project
    machine_type = "f1-micro"
    zone         = var.region_zone_c
@@ -307,7 +319,6 @@ resource "google_compute_http_health_check" "default" {
 resource "google_compute_address" "project-nat-ips" {
   count   = length(var.nat_ips)
   name    = "nat-ips"
-  #project = google_project.service_project_1.project_id
   project = google_compute_network.shared_network.project
   region  = var.region
 }
@@ -319,13 +330,10 @@ resource "google_compute_address" "project-nat-ips" {
 
 module "cloud-nat" {
   source     = "./modules/terraform-google-cloud-nat"
-  router  = "coalfire-router-1"
-   # project_id      = google_project.service_project_1.project_id
+  router  = "coalfire-router-2"
   project_id = google_compute_network.shared_network.project
   region     = var.region
 }
-
-
 
 
 
@@ -337,10 +345,9 @@ module "cloud_router" {
   source  = "./modules/terraform-google-cloud-router"
  
 
-  name    = "coalfire-router-1"
-  #project = google_project.service_project_1.project_id
+  name    = "coalfire-router-2"
    project = google_compute_network.shared_network.project
    region  = var.region
-  #network =  google_compute_network.custom_coalfire_network.self_link
    network = google_compute_network.shared_network.self_link
 }
+

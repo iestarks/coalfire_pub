@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"cloud-nat","Source":"./modules/terraform-google-cloud-nat","Dir":"modules/terraform-google-cloud-nat"},{"Key":"cloud_router","Source":"./modules/terraform-google-cloud-router","Dir":"modules/terraform-google-cloud-router"}]}
