@@ -71,8 +71,6 @@ The structure and formatting of the documentation is up to you.
 
 * https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
  
- #NAT Module source
-* https://github.com/terraform-google-modules/terraform-google-cloud-nat
 
 * Shared VPC Host Project
 
@@ -105,6 +103,13 @@ The structure and formatting of the documentation is up to you.
 * [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
 * [GCP External IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_9.png)
 
+
+ # NAT Module source
+* https://github.com/terraform-google-modules/terraform-google-cloud-nat
+
+ # Cloud Router Module source
+ 
+ https://github.com/terraform-google-modules/terraform-google-cloud-router
 
 ## Terraform State list
 
