@@ -57,8 +57,16 @@ The structure and formatting of the documentation is up to you.
 
 ##################################################################################################################################
 
-# Some areas where I performed some research into developing the Terraform IAC for this project
+Some areas where I performed some research into developing the Terraform IAC for this project
 
+ # NAT Module source
+* https://github.com/terraform-google-modules/terraform-google-cloud-nat
+
+ # Cloud Router Module source
+ 
+* https://github.com/terraform-google-modules/terraform-google-cloud-router
+
+####################################################################################################################################
 * google_compute_global_forwarding_rule
 
   https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
@@ -103,13 +111,6 @@ The structure and formatting of the documentation is up to you.
 * [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
 * [GCP External IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_9.png)
 
-
- # NAT Module source
-* https://github.com/terraform-google-modules/terraform-google-cloud-nat
-
- # Cloud Router Module source
- 
-* https://github.com/terraform-google-modules/terraform-google-cloud-router
 
 ## Terraform State list
 
