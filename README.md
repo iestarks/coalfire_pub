@@ -111,7 +111,7 @@ Some areas where I performed some research into developing the Terraform IAC for
 * [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
 * [GCP External IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_9.png)
 
-*setup-sa script created the Service Account used as well as added the appropriate roles to run terraform, for Org admin rights.
+#setup-sa script created the Service Account used as well as added the appropriate roles to run terraform, for Org admin rights.
 
 irvs@Irvs-MacBook-Pro scripts % ./setup-sa.sh
 Verifying organization...
