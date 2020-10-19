@@ -177,7 +177,7 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub3" {
 
 
 resource "google_compute_subnetwork" "coalfire_shared_network_sub4" {
-  name          = "coalfire-custom-network-sub3"
+  name          = "coalfire-custom-network-sub4"
   ip_cidr_range = "10.0.3.0/24"
      network = google_compute_network.shared_network.self_link
      project = google_compute_network.shared_network.project
@@ -223,11 +223,6 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub4" {
 }
 
 
-
-
-
-
-
 #############################################################################
 # # Create a VM which hosts a web page stating its identity ("VM1")
  resource "google_compute_instance" "apache-vm" {
@@ -264,20 +259,23 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub4" {
 ######################################################################################################
 
 resource "google_compute_global_forwarding_rule" "default" {
-  name       = "global-rule"
+ project = google_compute_shared_vpc_host_project.host_project.project
+  name       = "global-rule-coalfire"
   target     = google_compute_target_http_proxy.default.id
   port_range = "80"
 }
 
 resource "google_compute_target_http_proxy" "default" {
-  name        = "target-proxy"
+  name        = "target-proxy-coalfire"
+  project = google_compute_shared_vpc_host_project.host_project.project
   description = "a description"
   url_map     = google_compute_url_map.default.id
 }
 
 resource "google_compute_url_map" "default" {
-  name            = "url-map-target-proxy"
+  name            = "url-map-target-proxy-coalfire"
   description     = "a description"
+  project = google_compute_shared_vpc_host_project.host_project.project
   default_service = google_compute_backend_service.default.id
 
   host_rule {
@@ -297,16 +295,19 @@ resource "google_compute_url_map" "default" {
 }
 
 resource "google_compute_backend_service" "default" {
-  name        = "backend"
+  name        = "backend-coalfire-backend-service"
+  project = google_compute_shared_vpc_host_project.host_project.project
   port_name   = "http"
   protocol    = "HTTP"
   timeout_sec = 10
+  
 
   health_checks = [google_compute_http_health_check.default.id]
 }
 
 resource "google_compute_http_health_check" "default" {
-  name               = "check-backend"
+  name               = "check-backend-coalfire"
+  project = google_compute_shared_vpc_host_project.host_project.project
   request_path       = "/"
   check_interval_sec = 1
   timeout_sec        = 1
@@ -330,7 +331,7 @@ resource "google_compute_address" "project-nat-ips" {
 
 module "cloud-nat" {
   source     = "./modules/terraform-google-cloud-nat"
-  router  = "coalfire-router-2"
+  router  = "coalfire-router"
   project_id = google_compute_network.shared_network.project
   region     = var.region
 }
@@ -343,9 +344,7 @@ module "cloud-nat" {
 
 module "cloud_router" {
   source  = "./modules/terraform-google-cloud-router"
- 
-
-  name    = "coalfire-router-2"
+  name    = "coalfire-router"
    project = google_compute_network.shared_network.project
    region  = var.region
    network = google_compute_network.shared_network.self_link
