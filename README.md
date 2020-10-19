@@ -70,6 +70,9 @@ The structure and formatting of the documentation is up to you.
 * NAT
 
 * https://www.terraform.io/docs/providers/google/r/compute_router_nat.html
+ 
+ #NAT Module source
+* https://github.com/terraform-google-modules/terraform-google-cloud-nat
 
 * Shared VPC Host Project
 
