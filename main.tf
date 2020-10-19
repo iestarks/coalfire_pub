@@ -190,7 +190,7 @@ resource "google_compute_subnetwork" "coalfire_shared_network_sub4" {
 # # Create a VM which hosts a web page stating its identity ("VM1")
  resource "google_compute_instance" "compute-rhel-internet" {
    name         = "compute-rhel-internet"
-   #project      = google_project.service_project_1.project_id
+
     project = google_compute_network.shared_network.project
    machine_type = "f1-micro"
    zone         = var.region_zone
