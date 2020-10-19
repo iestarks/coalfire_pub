@@ -109,7 +109,7 @@ The structure and formatting of the documentation is up to you.
 
  # Cloud Router Module source
  
- https://github.com/terraform-google-modules/terraform-google-cloud-router
+* https://github.com/terraform-google-modules/terraform-google-cloud-router
 
 ## Terraform State list
 
