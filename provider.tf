@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("./credentials.json")
+  #credentials = file("./credentials.json")
   project     = "iac-triplex"
   region      = "us-east1"
 }

@@ -43,13 +43,6 @@ variable "billing_account_id" {
   default = "016F65-7A2064-F1458E"
 }
 
-variable "credentials_file_path" {
-  description = "Location of the credentials to use."
-  default     = "~/.gcloud/Terraform.json"
-}
-
-
-
 ##############Firewall Variables
 
 
