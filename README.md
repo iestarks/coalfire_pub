@@ -57,8 +57,16 @@ The structure and formatting of the documentation is up to you.
 
 ##################################################################################################################################
 
-# Some areas where I performed some research into developing the Terraform IAC for this project
+Some areas where I performed some research into developing the Terraform IAC for this project
 
+ # NAT Module source
+* https://github.com/terraform-google-modules/terraform-google-cloud-nat
+
+ # Cloud Router Module source
+ 
+* https://github.com/terraform-google-modules/terraform-google-cloud-router
+
+####################################################################################################################################
 * google_compute_global_forwarding_rule
 
   https://www.terraform.io/docs/providers/google/r/compute_global_forwarding_rule.html
@@ -103,13 +111,40 @@ The structure and formatting of the documentation is up to you.
 * [GCP VPC Network View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_8.png)
 * [GCP External IP View](https://github.com/iestarks/coalfire/blob/main/screenshots/Snip20201018_9.png)
 
+#setup-sa script created the Service Account used as well as added the appropriate roles to run terraform, for Org admin rights.
 
- # NAT Module source
-* https://github.com/terraform-google-modules/terraform-google-cloud-nat
+* irvs@Irvs-MacBook-Pro scripts % ./setup-sa.sh
+* Verifying organization...
+* Verifying project...
+* Verifying billing account...
+* Verifying project folder...
+* Creating Seed Service Account named triplex-sa@iac-triplex.iam.gserviceaccount.com...
+* Created service account [triplex-sa].
+* Downloading key to credentials.json...
+* Applying permissions for folder 702060037836...
+* Adding role roles/resourcemanager.folderViewer...
+* Applying permissions for org 227459452227 and project iac-triplex...
+* Adding role roles/resourcemanager.organizationViewer...
+* Adding role roles/resourcemanager.projectCreator...
+* Adding role roles/billing.user...
+* Adding role roles/compute.xpnAdmin...
+* Adding role roles/compute.networkAdmin...
+* Adding role roles/iam.serviceAccountAdmin...
+* Adding role roles/resourcemanager.projectIamAdmin...
+* Enabling APIs...
+* Enabling the billing account...
+* Updated IAM policy for account [016F65-7A2064-F1458E].
+* bindings:
+* - members:
+*  - user:triple@triplexinvestments.com
+*  role: roles/billing.admin
+* - members:
+*   - deleted:serviceAccount:triplex-sa@iac-triplex.iam.gserviceaccount.com?uid=113600138995246214756
+*   - serviceAccount:triplex-sa@iac-triplex.iam.gserviceaccount.com
+*   role: roles/billing.user
+* etag: BwWyCTpZd4c=
+* version: 1
 
- # Cloud Router Module source
- 
-* https://github.com/terraform-google-modules/terraform-google-cloud-router
 
 ## Terraform State list
 
